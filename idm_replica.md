@@ -1,5 +1,4 @@
-This is the guideline for installing new Replica for an existing IdM Server
-Master
+This is the guideline for installing new Replica for an existing IdM Server Master
 ===================================================================================
 0- The Replica and the master server must be running the same version of IdM
 and RedHat
@@ -23,9 +22,8 @@ configured on the server)
 ###################################################################################################	
 #		Maybe you should check firewalld and set the followings:
 #
-#		$ firewall-cmd --permanent
---add-service={ntp,http,https,ldap,ldaps,kerberos,kpasswd,dns} #
-#		$ firewall-cmd --reload
+#$ firewall-cmd --permanent --add-service={ntp,http,https,ldap,ldaps,kerberos,kpasswd,dns}
+#$ firewall-cmd --reload
 #
 ###################################################################################################
 
@@ -37,20 +35,18 @@ $ yum install ipa-client ipa-server bind bind-dyndb-ldap
 to the Domain as client using ipa-client:
 $ ipa-client-install
 
-# The wizard will ask you Domain name and ipa server full FQDN. Please note
-that you may receive some error  regarding dns records, but if you have
+# The wizard will ask you Domain name and ipa server full FQDN. 
+Please note that you may receive some error  regarding dns records, but if you have
 already added the records to /etc/hosts, just ignore it.
 
-# If you have already tried to join to the domain and you have received
-errors, you may add --force-join to the command:
+# If you have already tried to join to the domain and you have received errors, you may add --force-join to the command:
 $ ipa-client-install --force-join
 
 6- In IdM Master Server, add the new Replica Host as hostgroup member
 adding the client to the "ipaservers" Host Group:
 $ ipa hostgroup-add-member
 
-# This can be done via IdM UI: Identity -> Groups -> Host Groups -> ipaservers
--> add ...
+# This can be done via IdM UI: Identity -> Groups -> Host Groups -> ipaservers -> add ...
 
 7- Now it's time to install new Replica
 
@@ -58,11 +54,9 @@ $ kinit admin
 # Enter the password of IdM admin
 $ ipa-replica-install --setup-ca --setup-dns --setup-kra --principal admin
 --admin-password "admin_password"
-# Based on your requirements you can add server role to the new replica during
+#Based on your requirements you can add server role to the new replica during
 installation by adding: --setup-ca, --setup-dns, --setup-kra
-# If you are sure that all master server ports are open and you have not any
-connectivity issues, you can add --skip-conncheck to the command to bypass
-connection check.
+#If you are sure that all master server ports are open and you have not any connectivity issues, you can add --skip-conncheck to the command to bypass connection check.
 
 8- If the installation is successfully done, you are able to run the command
 and check the results:
@@ -137,9 +131,7 @@ new master CA server.
 
 
 ###################################################################################################	
-#
-Known Issues
-#
+#                                             Known Issues
 ###################################################################################################
 
 ===================================================================================
