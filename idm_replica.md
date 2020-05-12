@@ -1,4 +1,4 @@
-This is the guideline for installing new Replica for an existing IdM Server Master
+# This is the guideline for installing new Replica for an existing IdM Server Master
 ===================================================================================
 0- The Replica and the master server must be running the same version of IdM
 and RedHat
@@ -22,8 +22,8 @@ configured on the server)
 ###################################################################################################	
 #		Maybe you should check firewalld and set the followings:
 #
-#$ firewall-cmd --permanent --add-service={ntp,http,https,ldap,ldaps,kerberos,kpasswd,dns}
-#$ firewall-cmd --reload
+$ firewall-cmd --permanent --add-service={ntp,http,https,ldap,ldaps,kerberos,kpasswd,dns}
+$ firewall-cmd --reload
 #
 ###################################################################################################
 
